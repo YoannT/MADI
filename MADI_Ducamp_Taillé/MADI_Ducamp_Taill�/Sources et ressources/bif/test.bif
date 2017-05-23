@@ -1,0 +1,63 @@
+
+network aGrUM_BN{
+   property software aGrUM;
+}
+
+variable a {
+   type discrete[2] {0, 1};
+}
+
+variable b {
+   type discrete[2] {0, 1};
+}
+
+variable c {
+   type discrete[2] {0, 1};
+}
+
+variable d {
+   type discrete[4] {0, 1, 2, 3};
+}
+
+variable e {
+   type discrete[3] {0, 1, 2};
+}
+
+variable f {
+   type discrete[2] {0, 1};
+}
+
+probability (a | e, f) {
+   (0, 0) 0 0.2;
+   (1, 0) 0 0.2;
+   (2, 0) 0 0;
+   (0, 1) 0 0.6;
+   (1, 1) 0 0;
+   (2, 1) 0 0;
+}
+probability (b | e) {
+   (0) 0.2 0.6;
+   (1) 0 0.2;
+   (2) 0 0;
+}
+probability (c) {
+   default 0.8 0.2;
+}
+probability (d) {
+   default 0.2 0.2 0 0.6;
+}
+probability (e | c) {
+   (0) 0.6 0.2 0;
+   (1) 0.2 0 0;
+}
+probability (f | c, d) {
+   (0, 0) 0 0.2;
+   (1, 0) 0 0;
+   (0, 1) 0 0.2;
+   (1, 1) 0 0;
+   (0, 2) 0 0;
+   (1, 2) 0 0;
+   (0, 3) 0.4 0;
+   (1, 3) 0 0.2;
+}
+
